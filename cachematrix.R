@@ -19,24 +19,26 @@ makeCacheMatrix <- function(x = matrix()) {
 
 ## this function reads the output of makeCacheMatrix, 'listx' 
 ## first it checks to see if the inverse matrix 'inv' has been calculated and stored,
-## retrieving through xlist$getinv().  If the result is not null, 'inv' is printed out
+## retrieving through xlist$getinv().  If the result is not null, 'inv' is printed out.
 ## If the result of the query is null, then cacheSolve calculates the inverse using solve(x)
 ## and stores the result using setinv()
 
-cacheSolve <- function(xlist, ...) {
-       inv = x$getinv()
+cacheSolve <- function(xlist,...) {
+     inv = xlist$getinv()
      if(!is.null(inv)) {
           message("getting cached data")
           return(inv)
      }
-     Matrix <- xlist$get()
-     inv <- solve(Matrix, ...)
+     x <- xlist$get()
+     inv <- solve(x,...)
      xlist$setinv(inv)
      print(inv)
      
      Test <- x %*% inv
+     
+
 }
 
-##  I am not able to make this work.  I get the following error message:   
+##  I am not able to make this function work.  I get the following error message:   
 ## Error in array(x, c(length(x), 1L), if (!is.null(names(x))) list(names(x),  : 'data' must be of a vector type, was 'NULL' 
 ## I do not understand what the problem is.
