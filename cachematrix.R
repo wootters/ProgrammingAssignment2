@@ -36,3 +36,7 @@ cacheSolve <- function(xlist, ...) {
      
      Test <- x %*% inv
 }
+
+##  I am not able to make this work.  I get the following error message:   
+## Error in array(x, c(length(x), 1L), if (!is.null(names(x))) list(names(x),  : 'data' must be of a vector type, was 'NULL' 
+## I do not understand what the problem is.
