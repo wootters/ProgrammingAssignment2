@@ -23,15 +23,15 @@ makeCacheMatrix <- function(x = matrix()) {
 ## If the result of the query is null, then cacheSolve calculates the inverse using solve(x)
 ## and stores the result using setinv()
 
-cacheSolve <- function(x, ...) {
+cacheSolve <- function(xlist, ...) {
        inv = x$getinv()
      if(!is.null(inv)) {
           message("getting cached data")
           return(inv)
      }
-     Matrix <- x$get()
+     Matrix <- xlist$get()
      inv <- solve(Matrix, ...)
-     x$setinv(inv)
+     xlist$setinv(inv)
      print(inv)
      
      Test <- x %*% inv
